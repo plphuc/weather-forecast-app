@@ -1,7 +1,7 @@
 import React from 'react';
 
 import WeatherCard from 'components/WeatherCard/WeatherCard';
-import Hightlight from 'components/Hightlight/Hightlight';
+import Highlight from 'components/Highlight/Highlight';
 import { useWeatherInfo } from 'WeatherInfoProvider';
 
 import styles from './DetailsSection.module.css';
@@ -15,7 +15,7 @@ function DetailsSection(props) {
             return <WeatherCard weatherForecast = {weatherForecastInDay}/>
           })}
         </div>
-        <Hightlight />
+        <Highlight />
       </div>}
     </>
   );

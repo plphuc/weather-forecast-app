@@ -1,6 +1,6 @@
-import styles from './HightlightCard.module.css'
+import styles from './HighlightCard.module.css'
 
-function HightlightCard(props) {
+function HighlightCard(props) {
   const {title, children} = props
   return (
     <div className={styles.wrapper}>
@@ -10,4 +10,4 @@ function HightlightCard(props) {
   );
 }
 
-export default HightlightCard;
+export default HighlightCard;

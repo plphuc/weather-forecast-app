@@ -1,17 +1,17 @@
 
-.todayHightLightWrapper {
+.todayHighLightWrapper {
   padding: 30px 50px;
   flex: 1;
 }
 
-.todayHightLightContainer {
+.todayHighLightContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 30px;
 }
 
-.todayHightLightTitle {
+.todayHighLightTitle {
   display: block;
   margin-bottom: 30px;
   color: var(--main-text-color);
@@ -41,13 +41,13 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  .todayHightLightContainer {
+  .todayHighLightContainer {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
   }
 
-  .todayHightLightContainer > * {
+  .todayHighLightContainer > * {
     flex: 35%;
     padding: 30px;
     min-height: 120px;
