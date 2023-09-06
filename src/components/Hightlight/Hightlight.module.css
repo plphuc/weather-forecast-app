@@ -1,0 +1,59 @@
+
+.todayHightLightWrapper {
+  padding: 30px 50px;
+  flex: 1;
+}
+
+.todayHightLightContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.todayHightLightTitle {
+  display: block;
+  margin-bottom: 30px;
+  color: var(--main-text-color);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.valueInfo {
+  font-size: 64px;
+  color: var(--main-text-color);
+}
+
+.humidBarWrapper {
+  width: 80%;
+}
+
+.windDirectionWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-text-color);
+  gap: 10px;
+}
+
+.windDirectionIcon {
+  color: var(--des-text-color);
+}
+
+@media only screen and (min-width: 1024px) {
+  .todayHightLightContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .todayHightLightContainer > * {
+    flex: 35%;
+    padding: 30px;
+    min-height: 120px;
+  }
+
+  .valueInfo {
+    font-size: 40px;
+  }
+}

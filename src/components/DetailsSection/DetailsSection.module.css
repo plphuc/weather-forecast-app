@@ -1,0 +1,17 @@
+.detailsSectionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.nextDaysForecastWrapper {
+  height: 230px;
+  overflow: hidden;
+  padding: 50px;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 30px;
+}

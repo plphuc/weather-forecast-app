@@ -1,0 +1,60 @@
+.wrapper {
+  position: relative;
+}
+
+.searchContainer {
+  padding: 18px 12px;
+  
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchPlaceBtn {
+  width: 161px;
+  height: 40px;
+  flex-shrink: 0;
+
+  color: var(--main-text-color);
+  background-color: #6E707A;
+  font-family: var(--general-font);
+}
+
+.currentLocationBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #6e707a4d;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.currentLocationIcon {
+  display: flex;
+  color: var(--main-text-color);
+}
+
+.disabledLocation {
+  color: #6e707a4d;
+}
+
+.searchModalContainer {
+  width: 100%;
+  height: 100%;
+  /* display: none; */
+
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+@media only screen and (min-width: 1024px) {
+  .searchModalContainer {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

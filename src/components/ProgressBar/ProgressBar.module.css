@@ -1,0 +1,45 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.percentageNumb {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: var(--des-text-color);
+  font-weight: 700;
+}
+
+.container {
+  width: 100%;
+  background: #E7E7EB;
+  border-radius: 15px;
+  position: relative;
+}
+
+.pastProgress {
+  height: inherit;
+  background: #FFEC65;
+  border-radius: 15px;
+
+  position: absolute;
+}
+
+.percentageChar {
+  width: 100%;
+  padding-top: 3px;
+  color: var(--des-text-color);
+  font-weight: 700;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media only screen and (min-width: 1024px) {
+  .wrapper {
+    display: none;
+  }
+}

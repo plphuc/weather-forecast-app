@@ -1,0 +1,56 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Raleway:wght@300;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,400&display=swap');
+
+:root {
+  --general-font: 'Raleway', sans-serifs;
+
+  --background-color: #100e1d;
+  --main-color: #1e213a;
+  --card-background-color: #1e213a;
+  --main-text-color: #e7e7eb;
+  --des-text-color: #88869d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+html {
+  height: 100%;
+  font-size: 62.5%;
+  font-family: var(--general-font);
+  background-color: var(--background-color);
+}
+
+body {
+  height: 100%;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizespeed;
+}
+
+button,
+input,
+[tabindex] {
+  outline: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root {
+  height: 100%;
+}
+
+.hideItem {
+  display: none;
+}
+
+.displayItem {
+  display: '';
+}
