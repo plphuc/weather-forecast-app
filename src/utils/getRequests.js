@@ -1,6 +1,10 @@
 export const getLocationCoordinates = async (searchText) => {
   try {
-    const result = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${process.env.REACT_APP_GET_WEATHER_KEY_API}`);
+    const result = await fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${process.env.REACT_APP_GET_WEATHER_KEY_API}`, {
+      headers: {
+        'x-requested-with': true,
+      }
+    });
     return result.json();
   } catch (error) {
     console.log(error);
