@@ -1,7 +1,15 @@
 import { useContext, createContext, useReducer } from 'react';
 
 import * as fetchApi from 'utils/getRequests';
-import * as utilsFunc from 'utils/convertFunc'
+
+const isNextDay = (nextDayForecastList, currentDay, timeOfForecast) => {
+  const date = new Date(timeOfForecast);
+  if (nextDayForecastList.length === 0) {
+    return currentDay.getDate() !== date.getDate();
+  }
+  return date.getDate() !== nextDayForecastList[nextDayForecastList.length - 1]?.date.getDate();
+};
+
 const extractInfoFromWeatherObj = (weatherInfoObj) => {
   const date = new Date(weatherInfoObj.dt_txt || weatherInfoObj.dt * 1000);
   const iconName = weatherInfoObj.weather[0].icon;
@@ -17,30 +25,26 @@ const extractInfoFromWeatherObj = (weatherInfoObj) => {
   return { date, iconName, weatherName, temperature, tempMax, tempMin, windInfo, humidity, visibility, airPressure };
 };
 
-const extractWeatherInfoFromFetch = ({ currentWeatherForecast, nextDaysWeatherForecast }) => {
-  const nextDaysForecast = [];
-  const currentDay = utilsFunc.convertEpochToDate(currentWeatherForecast.dt)
+const extractWeatherInfoFromFetch = ({ current, nextDays }) => {
+  const currentDay = new Date(current.dt * 1000);
 
-  nextDaysWeatherForecast.list.forEach((weatherForecastInDay) => {
+  const nextDayForecastList = nextDays.list.reduce((nextDayForecastList, weatherForecastInDay) => {
     const date = new Date(weatherForecastInDay.dt_txt);
-    if (currentDay.getDate() !== date.getDate()) {
-      // Just add a weather forecast for a day
-      if (nextDaysForecast.length === 0 || date.getDate() !== nextDaysForecast[nextDaysForecast.length - 1].date.getDate()) {
-        const nextDayForecast = extractInfoFromWeatherObj(weatherForecastInDay);
-        nextDaysForecast.push(nextDayForecast);
-      }
+    if (!isNextDay(nextDayForecastList, currentDay, date)) {
+      return nextDayForecastList;
     }
-  });
-  const location = currentWeatherForecast.name;
+    const nextDayForecast = extractInfoFromWeatherObj(weatherForecastInDay);
+    return [...nextDayForecastList, nextDayForecast];
+  }, []);
 
-  return { location, current: extractInfoFromWeatherObj(currentWeatherForecast), nextDays: nextDaysForecast };
+  return { location: current.name, current: extractInfoFromWeatherObj(current), nextDays: nextDayForecastList };
 };
 
 const fetchWeather = async (longitude, latitude) => {
   const currentWeatherForecast = await fetchApi.getCurrentWeather(longitude, latitude);
   const nextDaysWeatherForecast = await fetchApi.getNextDaysForecast(longitude, latitude);
 
-  return { currentWeatherForecast, nextDaysWeatherForecast };
+  return { current: currentWeatherForecast, nextDays: nextDaysWeatherForecast };
 };
 
 const WeatherContext = createContext();
